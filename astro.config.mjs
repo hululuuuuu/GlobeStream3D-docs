@@ -17,9 +17,9 @@ export default defineConfig({
     },
     integrations: [
       starlight({
-        title: 'Earth-flyLine',
+        title: 'GlobeStream3D',
         social: {
-          github: 'https://github.com/JavaScriptam/earth-flyLine',
+          github: 'https://github.com/JavaScriptam/GlobeStream3D',
         },
         sidebar: [
           {
