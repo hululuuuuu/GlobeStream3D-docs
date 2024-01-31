@@ -17,10 +17,8 @@ export default defineConfig({
     },
     integrations: [
       starlight({
-        title: 'GlobeStream3D',
-        social: {
-          github: 'https://github.com/JavaScriptam/GlobeStream3D',
-        },
+        title: 'earth-flyline',
+      
         sidebar: [
           {
             label: '更新日志',
