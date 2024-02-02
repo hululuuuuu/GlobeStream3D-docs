@@ -93,15 +93,18 @@ import Alert from '../../../components/alert.astro'
 <Tag color="pink">说明: 球体样式配置</Tag>
 <br/>
 
-<Alert color="primary">可以理解为海洋的颜色</Alert>
-<br/>
-
 <Tag color="purple">默认</Tag>
 
 ``` json
 {
   color: "#13162c",
-  material: "MeshPhongMaterial" //材质类型 
+  material: "MeshPhongMaterial", //材质类型 
+  dragConfig:{
+    rotationSpeed: 1,//和鼠标的交互速度
+    inertiaFactor: 0.95,//惯性系数 0-1之间 0 为无惯性
+    disableX: true,//是否禁用x轴旋转
+    disableY: false,//是否禁用y轴旋转
+  }
 }
 ```
 #### config.earth.material
