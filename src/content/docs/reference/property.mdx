@@ -79,12 +79,18 @@ import Alert from '../../../components/alert.astro'
 
 ### config.texture
 
-<Alert color="warning">注意：如果使用贴图，则地图颜色等相关配置不生效</Alert>
 <br/>
 
-<Tag color="blue">类型: string</Tag>
-<Tag color="pink">说明: 地图图片URL地址</Tag>
-<Tag color="purple">默认: -</Tag>
+<Tag color="blue">类型: object</Tag>
+<Tag color="pink">说明: 地球/地图的贴图效果,如果使用 mixed 则是 json 地图文件和贴图混合使用</Tag>
+<Tag color="purple">默认</Tag>
+``` json
+// mixed 功能是为了满足部分国家复杂定制化地图样式的需求而提供的功能
+{
+  path:'path/to/image.png',  //图片地址 格式可以是img图片 或者svg,
+  mixed: false, //是否混合地图和地球贴图 如果为true记得注册 json 地图文件
+}
+```
 <br/>
 
 ### config.earth
