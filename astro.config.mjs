@@ -49,6 +49,10 @@ export default defineConfig({
             link:"/advance/advance/"
           },
           {
+            label: '常见问题',
+            link:"/questions"
+          },
+          {
             label: '致谢',
             link:"/thanks/thanks/"
           },

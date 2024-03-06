@@ -319,3 +319,43 @@ import Alert from '../../../components/alert.astro'
 },
 ```
 <Alert color="primary">提示：key值取地图json文件 里对应国家 properties.name 字段</Alert>
+
+
+### config.wallStyle
+<br/>
+<Tag color="blue">类型: object</Tag>
+<Tag color="pink">说明: 边界墙配置</Tag>
+<br/>
+<br/>
+<Tag color="purple">默认</Tag>
+``` json
+//因为路线图包含了路径和飞线 所以支持 flyLineStyle 和 pathStyle 的所有配置
+{
+  wallStyle: {
+    color: "#cd79ff", //颜色
+    opacity: 0.5,//透明度
+    height: 2, //墙体高度
+    width: 2,//墙体宽度  一般不做调整
+  }
+}
+
+```
+
+``` javascript
+//引入地图文件
+import world from "./map/world.json";
+const chartInstance = chart.init(...options)
+const chinaData = world.features.find((item: any) => {
+  return item.properties.name === "China";
+}).geometry.coordinates;
+
+//此处注意因为国家可能是由多个区域组成 比如中国大陆和中国台湾省，所以每一块儿都需要遍历添加
+chinaData.forEach((item: any) => {
+  chartInstance.addData("wall", {
+    data: item,//请注意 data 的数据结构: [[[lon,lat],[lon,lat],[lon,lat]]] 三维数组，第一维代表多边形，第二维代表多边形的点位，第三维代表点位的经纬度
+    style: {
+      opacity: 0.5,
+    },
+  });
+});
+```

@@ -34,6 +34,85 @@ const chart = earthFlyLine.init({
 });
 ```
 
+### 主题 （感谢李同学的配色）
+#### 暗紫色 (#cd79ff)
+```
+
+{
+  mapStyle: {
+    areaColor: "#2e3564",
+    lineColor: "#797eff",
+  },
+  spriteStyle: {
+    color: "#797eff",
+    show: true,
+  }, //光圈
+  pathStyle: {
+    color: "#cd79ff", //飞线路径配置
+  },
+  flyLineStyle: {
+    //飞线样式配置
+    color: "#cd79ff",
+  },
+  roadStyle: {
+    //道路样式配置
+    flyLineStyle: {
+      color: "#cd79ff",
+    },
+    pathStyle: {
+      color: "#cd79ff",
+    },
+  },
+  scatterStyle: {
+    //涟漪
+    color: "#cd79ff",
+  },
+   wallStyle: {
+    color: "#cd79ff",
+    opacity: 0.5,
+  },
+}
+
+```
+#### 蔚蓝色 (#02fff6)
+```json
+{
+  bgStyle: {
+    color: "#040D21",
+    opacity: 0,
+  },
+  mapStyle: {
+    areaColor: "#013e87",
+    lineColor: "#516aaf",
+  },
+  spriteStyle: {
+    color: "#138cdf",
+    size: 2.5,
+  },
+  pathStyle: {
+    color: "#7aaae9",
+  },
+  flyLineStyle: {
+    color: "#02fff6",
+  },
+   roadStyle: {
+    flyLineStyle: {
+      color: "#02fff6",
+    },
+    pathStyle: {
+      color: "#02fff6",
+    },
+  },
+  scatterStyle: {
+    color: "#02fff6",
+  },
+  wallStyle: {
+    color: "#02fff6",
+    opacity: 0.5,
+  },
+}
+
+```
 import Earth from '../../../components/earth.astro'
 
 <div class="container">
