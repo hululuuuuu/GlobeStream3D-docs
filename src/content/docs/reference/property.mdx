@@ -85,7 +85,12 @@ import Alert from '../../../components/alert.astro'
 <Tag color="pink">说明: 地球/地图的贴图效果,如果使用 mixed 则是 json 地图文件和贴图混合使用</Tag>
 <Tag color="purple">默认</Tag>
 ``` json
-// mixed 功能是为了满足部分国家复杂定制化地图样式的需求而提供的功能
+// 混合策略的目的是希望关于部分地图色块复杂定制化（目前组件做不到的复杂样式），比如说希望给某个国家进行设置一个复杂的样式这种样式只能通过贴图来满足，其他的地区样式依旧采用 js 绘制。
+
+// 举个例子，我们希望加拿大这个国家有独立的贴图样式，而其他的区域照旧通过 js 的方式绘制普通地图。
+// 那么想实现这种效果有两种方式
+// 1、应该是在注册地图前，处理一次地图数据，把加拿大相关数据给排除掉再进行地图注册。组件就不会绘制相关区域，这样贴图自然而然就显示出来了
+// 2、我们不想处理地图文件，那么我们可以通过设置 config.regions.Canada.show 为 false，组件同样不会渲染该片区域。
 {
   path:'path/to/image.png',  //图片地址 格式可以是img图片 或者svg,
   mixed: false, //是否混合地图和地球贴图 如果为true记得注册 json 地图文件
@@ -282,6 +287,8 @@ import Alert from '../../../components/alert.astro'
 ``` json
 {
   areaColor: "#cd79ff",
+  opacity: 1,
+  show:true
 }
 ```
 ### config.enableZoom
