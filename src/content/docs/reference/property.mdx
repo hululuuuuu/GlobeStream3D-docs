@@ -2,70 +2,86 @@
 title: 参数
 ---
 
-import Tag from '../../../components/tag.astro'
-import Alert from '../../../components/alert.astro'
+import Tag from "../../../components/tag.astro";
+import Alert from "../../../components/alert.astro";
 
 ## options
+
 ---
-创建earth-flyline实例所需参数配置
+
+创建 earth-flyline 实例所需参数配置
+
 ### options.dom（必填）
-<br/>
+
+<br />
 <Tag color="blue">类型: HTMLElement</Tag>
 <Tag color="pink">说明：dom容器（需设置宽高）</Tag>
 
-
 ### options.autoRotate
-<br/>
+
+<br />
 <Tag color="blue">类型: boolean</Tag>
 <Tag color="pink"> 说明: 是否自转</Tag>
 <Tag color="purple">默认：true</Tag>
 
 ### options.stopRotateByHover
-<br/>
+
+<br />
 <Tag color="blue">类型: boolean</Tag>
 <Tag color="pink"> 说明: 地球自转是否受到鼠标悬停的影响</Tag>
 <Tag color="purple">默认：true</Tag>
-<br/>
-<Alert color="primary">例如: stopRotateByHover === true && autoRotate === true,鼠标悬停则地球停止自转<br/>stopRotateByHover === false && autoRotate === true鼠标悬停则地球不受影响会继续自转 </Alert>
+<br />
+<Alert color="primary">
+  例如: stopRotateByHover === true && autoRotate === true,鼠标悬停则地球停止自转
+  <br />
+  stopRotateByHover === false && autoRotate ===
+  true鼠标悬停则地球不受影响会继续自转{" "}
+</Alert>
 
 ### options.rotateSpeed
-<br/>
+
+<br />
 <Tag color="blue">类型: number</Tag>
 <Tag color="pink"> 说明: 自转速度</Tag>
 <Tag color="purple">默认：0.01</Tag>
 
 ### options.map
-<br/>
+
+<br />
 <Tag color="blue">类型: string</Tag>
 <Tag color="pink"> 说明: 已注册地图名称</Tag>
 <Tag color="purple">默认：-</Tag>
 
 ### options.mode
-<br/>
+
+<br />
 <Tag color="blue">类型: string</Tag>
 <Tag color="pink"> 说明: 渲染模式</Tag>
 <Tag color="purple">默认：3d</Tag>
 
 ### options.limitFps
-<br/>
+
+<br />
 <Tag color="blue">类型: boolean</Tag>
 <Tag color="pink">说明：是否锁定30帧</Tag>
 <Tag color="purple">默认：false</Tag>
 
-
 ## options.config
+
 内置模型样式配置
 
 ---
 
 ### config.R
-<br/>
+
+<br />
 <Tag color="blue">类型: number</Tag>
 <Tag color="pink">说明: 地球半径</Tag>
 <Tag color="purple">默认: 150</Tag>
 
 ### config.bgStyle
-<br/>
+
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink"> 说明: 场景背景色</Tag>
 
@@ -77,25 +93,28 @@ import Alert from '../../../components/alert.astro'
 }
 ```
 
-### config.texture （只支持 3D模式）
+### config.texture （只支持 3D 模式）
 
-<br/>
+<br />
 
 <Tag color="blue">类型: object</Tag>
-<Tag color="pink">说明: 地球/地图的贴图效果,如果使用 mixed 则是 json 地图文件和贴图混合使用</Tag>
+<Tag color="pink">
+  说明: 地球/地图的贴图效果,如果使用 mixed 则是 json 地图文件和贴图混合使用
+</Tag>
 <Tag color="purple">默认</Tag>
-``` json
-// 混合策略的目的是希望关于部分地图色块复杂定制化（目前组件做不到的复杂样式），比如说希望给某个国家进行设置一个复杂的样式这种样式只能通过贴图来满足，其他的地区样式依旧采用 js 绘制。
+``` json // 混合策略的目的是希望关于部分地图色块复杂定制化（目前组件做不到的复杂样式），比如说希望给某个国家进行设置一个复杂的样式这种样式只能通过贴图来满足，其他的地区样式依旧采用
+js 绘制。
 
 // 举个例子，我们希望加拿大这个国家有独立的贴图样式，而其他的区域照旧通过 js 的方式绘制普通地图。
 // 那么想实现这种效果有两种方式
 // 1、应该是在注册地图前，处理一次地图数据，把加拿大相关数据给排除掉再进行地图注册。组件就不会绘制相关区域，这样贴图自然而然就显示出来了
 // 2、我们不想处理地图文件，那么我们可以通过设置 config.regions.Canada.show 为 false，组件同样不会渲染该片区域。
 {
-  path:'path/to/image.png',  //图片地址 格式可以是img图片 或者svg,
-  mixed: false, //是否混合地图和地球贴图 如果为true记得注册 json 地图文件
+path:'path/to/image.png', //图片地址 格式可以是 img 图片 或者 svg,
+mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 json 地图文件
 }
-```
+
+````
 <br/>
 
 ### config.earth
@@ -109,7 +128,7 @@ import Alert from '../../../components/alert.astro'
 ``` json
 {
   color: "#13162c",
-  material: "MeshPhongMaterial", //材质类型 
+  material: "MeshPhongMaterial", //材质类型
   dragConfig:{
     rotationSpeed: 1,//和鼠标的交互速度
     inertiaFactor: 0.95,//惯性系数 0-1之间 0 为无惯性
@@ -117,29 +136,31 @@ import Alert from '../../../components/alert.astro'
     disableY: false,//是否禁用y轴旋转
   }
 }
-```
+````
+
 #### config.earth.material
-<br/>
+
+<br />
 <Tag color="blue">类型: string</Tag>
 <Tag color="pink">球体材质 </Tag>
 <Tag color="purple">默认: "MeshPhongMaterial"</Tag>
-<br/>
+<br />
 <Alert color="primary">
-    "MeshPhongMaterial"
-    | "MeshBasicMaterial"
-    | "MeshLambertMaterial"
-    | "MeshMatcapMaterial"
-    | "MeshNormalMaterial"
-    <br/>
-    想要细致了解材质请参考<a href="https://threejs.org/docs/#api/zh/materials/MeshBasicMaterial">文档</a>
+  "MeshPhongMaterial" | "MeshBasicMaterial" | "MeshLambertMaterial" |
+  "MeshMatcapMaterial" | "MeshNormalMaterial"
+  <br />
+  想要细致了解材质请参考
+  <a href="https://threejs.org/docs/#api/zh/materials/MeshBasicMaterial">
+    文档
+  </a>
 </Alert>
 ### config.mapStyle
-<br/>
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 地图样式配置</Tag>
 
-<br/>
-<br/>
+<br />
+<br />
 
 <Tag color="purple">默认</Tag>
 ``` json
@@ -150,12 +171,13 @@ import Alert from '../../../components/alert.astro'
 ```
 
 ### config.spriteStyle
-<br/>
+
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 地球光圈配置</Tag>
 
-<br/>
-<br/>
+<br />
+<br />
 
 <Tag color="purple">默认: #797eff</Tag>
 ``` json
@@ -166,28 +188,31 @@ import Alert from '../../../components/alert.astro'
 ```
 
 ### config.pathStyle
-<br/>
+
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 飞线路径线配置</Tag>
-<br/>
-<br/>
+<br />
+<br />
 <Tag color="purple">默认</Tag>
 
-``` json
+```json
 {
-  color: "#cd79ff", 
+  "color": "#cd79ff",
+  "show": true
 }
 ```
 
 ### config.flyLineStyle
-<br/>
+
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 蝌蚪飞线配置</Tag>
-<br/>
-<br/>
+<br />
+<br />
 <Tag color="purple">默认</Tag>
 
-``` json
+```json
 {
   color: "#cd79ff",
   duration:2000, // 一个完成动画所需时间(单位毫秒)，值越小动画速度越快
@@ -199,8 +224,8 @@ import Alert from '../../../components/alert.astro'
 }
 ```
 
-
 ### config.roadStyle
+
 <br/>
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 路线图配置</Tag>
@@ -224,7 +249,7 @@ import Alert from '../../../components/alert.astro'
   }
 }
 
-```
+````
 
 ### config.scatterStyle
 <br/>
@@ -247,7 +272,8 @@ import Alert from '../../../components/alert.astro'
   customFigure?:false //（该字段查看config.scatterStyle.customFigure详解）
 }
 
-```
+````
+
 ### config.scatterStyle.customFigure
 
 <Alert color="warning">注意：如果使用该字段则内置的涟漪不生效,动画需要自己配置</Alert>
@@ -270,52 +296,56 @@ import Alert from '../../../components/alert.astro'
 如果to.opacity === [0.5,1,0.5,0] 则表示动画会经历 0>0.5>1>0.5>0 五个阶段过渡，一轮动画播放完成
 ```
 
-<Alert color="error">请注意texture字段的图片或者svg需要白色,可以参考本项目下(/src/image/triangel)svg和png图片，颜色可以通过scatterStyle.color字段来控制</Alert>
-<br/>
-
+<Alert color="error">
+  请注意texture字段的图片或者svg需要白色,可以参考本项目下(/src/image/triangel)svg和png图片，颜色可以通过scatterStyle.color字段来控制
+</Alert>
+<br />
 
 ### config.hoverRegionStyle
-<br/>
+
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 鼠标hover区域高亮</Tag>
 <Tag color="purple">默认: -</Tag>
 
-<br/>
-<br/>
+<br />
+<br />
 <Tag color="red">举例</Tag>
 
-``` json
+```json
 {
-  areaColor: "#cd79ff",
-  opacity: 1,
-  show:true
+  "areaColor": "#cd79ff",
+  "opacity": 1,
+  "show": true
 }
 ```
+
 ### config.enableZoom
-<br/>
+
+<br />
 <Tag color="blue">类型: boolean</Tag>
-<Tag color="pink">说明:  是否允许滚轮放大缩小</Tag>
+<Tag color="pink">说明: 是否允许滚轮放大缩小</Tag>
 <Tag color="purple">默认: false</Tag>
 
-<br/>
-<br/>
+<br />
+<br />
 <Tag color="red">举例</Tag>
 
-``` json
+```json
 {
-  enableZoom: true,
+  "enableZoom": true
 }
 ```
 
-<br/>
+<br />
 ### config.regions
-<br/>
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 单独配置地图区域的颜色</Tag>
 <Tag color="purple">默认: -</Tag>
 
-<br/>
-<br/>
+<br />
+<br />
 
 <Tag color="red">举例</Tag>
 ``` json
@@ -327,8 +357,8 @@ import Alert from '../../../components/alert.astro'
 ```
 <Alert color="primary">提示：key值取地图json文件 里对应国家 properties.name 字段</Alert>
 
-
 ### config.wallStyle
+
 <br/>
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 边界墙配置</Tag>
@@ -346,7 +376,7 @@ import Alert from '../../../components/alert.astro'
   }
 }
 
-```
+````
 
 ``` javascript
 //引入地图文件
@@ -365,4 +395,4 @@ chinaData.forEach((item: any) => {
     },
   });
 });
-```
+````
