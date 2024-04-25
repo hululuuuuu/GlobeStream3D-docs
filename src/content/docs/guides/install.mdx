@@ -1,6 +1,5 @@
 ---
 title: 安装
-
 ---
 
 ```bash
@@ -8,12 +7,15 @@ npm install earth-flyline
 ```
 
 ## 🚗 开始
-本组件提供json文件和image图片两种方式注册地图
-### JSON注册
+
+本组件提供 json 文件和 image 图片两种方式注册地图
+
+### JSON 注册
+
 ```javascript
 import earthFlyLine from "earth-flyline";
 //请先下载地图文件（可去第三方下载） 然后注册地图 本项目的地图文件在src/map/world
-import geojson from '/path/to/world.json'
+import geojson from "/path/to/world.json";
 earthFlyLine.registerMap("world", geojson);
 //获取dom节点作为容器 注：该节点请设置宽高
 const dom = document.getElementById("container");
@@ -22,20 +24,26 @@ const chart = earthFlyLine.init({
   map: "world",
 });
 ```
-### IMG注册
+
+### IMG 注册
+
 ```javascript
 import earthFlyLine from "earth-flyline";
-const imageUrl = 'path/to/image.png'
+const imageUrl = "path/to/image.png";
 const chart = earthFlyLine.init({
   dom,
-  config:{
-    texture: imageUrl,// worldImg 为图片地址非base64
-  }
+  config: {
+    texture: {
+      path: imageUrl,
+    }, // worldImg 为图片地址非base64 更多配置情参考具体文档
+  },
 });
 ```
 
 ### 主题 （感谢李同学的配色）
+
 #### 暗紫色 (#cd79ff)
+
 ```
 
 {
@@ -74,46 +82,48 @@ const chart = earthFlyLine.init({
 }
 
 ```
+
 #### 蔚蓝色 (#02fff6)
+
 ```json
 {
-  bgStyle: {
-    color: "#040D21",
-    opacity: 0,
+  "bgStyle": {
+    "color": "#040D21",
+    "opacity": 0
   },
-  mapStyle: {
-    areaColor: "#013e87",
-    lineColor: "#516aaf",
+  "mapStyle": {
+    "areaColor": "#013e87",
+    "lineColor": "#516aaf"
   },
-  spriteStyle: {
-    color: "#138cdf",
-    size: 2.5,
+  "spriteStyle": {
+    "color": "#138cdf",
+    "size": 2.5
   },
-  pathStyle: {
-    color: "#7aaae9",
+  "pathStyle": {
+    "color": "#7aaae9"
   },
-  flyLineStyle: {
-    color: "#02fff6",
+  "flyLineStyle": {
+    "color": "#02fff6"
   },
-   roadStyle: {
-    flyLineStyle: {
-      color: "#02fff6",
+  "roadStyle": {
+    "flyLineStyle": {
+      "color": "#02fff6"
     },
-    pathStyle: {
-      color: "#02fff6",
-    },
+    "pathStyle": {
+      "color": "#02fff6"
+    }
   },
-  scatterStyle: {
-    color: "#02fff6",
+  "scatterStyle": {
+    "color": "#02fff6"
   },
-  wallStyle: {
-    color: "#02fff6",
-    opacity: 0.5,
-  },
+  "wallStyle": {
+    "color": "#02fff6",
+    "opacity": 0.5
+  }
 }
-
 ```
-import Earth from '../../../components/earth.astro'
+
+import Earth from "../../../components/earth.astro";
 
 <div class="container">
   <Earth></Earth>
