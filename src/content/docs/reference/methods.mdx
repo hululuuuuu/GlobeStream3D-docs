@@ -17,6 +17,7 @@ earthFlyLine.init(options)=>Chart
 ```
 ---
 type: <Tag color="cyan">flyLine</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">point</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">road</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">wall</Tag>
+<span style="margin-right:8px;">|</span><Tag  color="cyan">mapStreamLine</Tag>
 
 <br/>
 <Tag color="blue">类型: string</Tag>
@@ -52,9 +53,9 @@ chart.addData('flyLine',flyLineData)
 <Alert color="primary">
 scatterStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configscatterstyle"><span style="color:#1890ff;">config.scatterStyle</span></a>
 
-pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a> 
+pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
 
-flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a> 
+flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
 
 
 </Alert>
@@ -107,9 +108,9 @@ chart.addData('road',roadData)
 ```
 <Alert color="primary">
 
-pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a> 
+pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
 
-flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a> 
+flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
 
 </Alert>
 <br/>
@@ -134,7 +135,7 @@ scatterStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/r
 <br/>
 <Alert color="warning">
 该数据里面有from和to两个字段，代表起始点和终点lon和lat 分别代表经度和纬度。最终会生成带有两个涟漪点位的飞线。
-id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;">id=$\{from.id\}-$\{to.id\}</span> ,如果没有传id 则会根据经纬度拼接 拼接逻辑为： 
+id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;">id=$\{from.id\}-$\{to.id\}</span> ,如果没有传id 则会根据经纬度拼接 拼接逻辑为：
 <span style="color:#1890ff;">id =$\{from.lon\}$\{from.lat\}-$\{to.lon\}$\{to.lat\}</span> 此id被用于remove方法
 </Alert>
 ### setData

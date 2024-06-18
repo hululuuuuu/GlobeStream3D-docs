@@ -245,7 +245,7 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
     }
   },
   pathStyle:{
-    color: "#cd79ff", 
+    color: "#cd79ff",
   }
 }
 
@@ -279,7 +279,7 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 <Alert color="warning">注意：如果使用该字段则内置的涟漪不生效,动画需要自己配置</Alert>
 ``` json
   { //自定义节点样式
-    texture: imgUrl or svgUrl,//自定义节点的贴图 可以是image的url 或者是svg的url 
+    texture: imgUrl or svgUrl,//自定义节点的贴图 可以是image的url 或者是svg的url
     animate: { //不配置animate则不会有动画执行,目前只支持 size和opacity的动画
       from: {
         size?: 11,
@@ -392,6 +392,45 @@ chinaData.forEach((item: any) => {
     data: item,//请注意 data 的数据结构: [[[lon,lat],[lon,lat],[lon,lat]]] 三维数组，第一维代表多边形，第二维代表多边形的点位，第三维代表点位的经纬度
     style: {
       opacity: 0.5,
+    },
+  });
+});
+````
+### config.mapStreamStyle
+
+<br/>
+<Tag color="blue">类型: object</Tag>
+<Tag color="pink">说明: 流体线</Tag>
+<br/>
+<br/>
+<Tag color="purple">默认</Tag>
+``` json
+
+{
+  mapStreamStyle: {
+    color: "#f0f0f0",
+    opacity: 0.5,
+    speed: 1,
+    splitLine: 3,
+  }
+}
+
+````
+
+``` javascript
+//引入地图文件
+import world from "./map/world.json";
+const chartInstance = chart.init(...options)
+const chinaData = world.features.find((item: any) => {
+  return item.properties.name === "China";
+}).geometry.coordinates;
+
+//此处注意因为国家可能是由多个区域组成 比如中国大陆和中国台湾省，所以每一块儿都需要遍历添加
+chinaData.forEach((item: any) => {
+  chartInstance.addData("mapStreamLine", {
+    data: item,//请注意 data 的数据结构: [[[lon,lat],[lon,lat],[lon,lat]]] 三维数组，第一维代表多边形，第二维代表多边形的点位，第三维代表点位的经纬度
+    style: {
+      //...
     },
   });
 });
