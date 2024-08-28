@@ -320,6 +320,21 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 }
 ```
 
+### config.barStyle
+
+<br />
+<Tag color="blue">类型: object</Tag>
+<Tag color="pink">说明: 柱体</Tag>
+<br />
+<br />
+<Tag color="purple">默认</Tag>
+
+```json
+{
+  "color": "#cd79ff"
+}
+```
+
 ### config.enableZoom
 
 <br />
@@ -396,23 +411,24 @@ chinaData.forEach((item: any) => {
   });
 });
 ````
+
 ### config.mapStreamStyle
 
-<br/>
+<br />
 <Tag color="blue">类型: object</Tag>
 <Tag color="pink">说明: 流体线</Tag>
-<br/>
-<br/>
+<br />
+<br />
 <Tag color="purple">默认</Tag>
 ``` json
 
 {
-  mapStreamStyle: {
-    color: "#f0f0f0",
-    opacity: 0.5,
-    speed: 1,
-    splitLine: 3,
-  }
+mapStreamStyle: {
+color: "#f0f0f0",
+opacity: 0.5,
+speed: 1,
+splitLine: 3,
+}
 }
 
 ````

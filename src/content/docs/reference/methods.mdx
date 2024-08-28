@@ -2,22 +2,38 @@
 title: 实例方法
 ---
 
-import Tag from '../../../components/tag.astro'
-import Alert from '../../../components/alert.astro'
-import '../../../components/commonFunc.astro'
+import Tag from "../../../components/tag.astro";
+import Alert from "../../../components/alert.astro";
+import "../../../components/commonFunc.astro";
 
 ## Chart
+
 ```bash
 earthFlyLine.init(options)=>Chart
 ```
 
 ### addData
-``` javascript
-  chart.addData(type,data)
+
+```javascript
+chart.addData(type, data);
 ```
+
 ---
-type: <Tag color="cyan">flyLine</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">point</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">road</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">wall</Tag>
-<span style="margin-right:8px;">|</span><Tag  color="cyan">mapStreamLine</Tag>
+
+<div>
+  type:
+  <Tag color="cyan">flyLine</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">point</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">road</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">wall</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">mapStreamLine</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">bar</Tag>
+</div>
 
 <br/>
 <Tag color="blue">类型: string</Tag>
@@ -53,10 +69,9 @@ chart.addData('flyLine',flyLineData)
 <Alert color="primary">
 scatterStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configscatterstyle"><span style="color:#1890ff;">config.scatterStyle</span></a>
 
-pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
+pathStyle 请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
 
-flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
-
+flyLineStyle 请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
 
 </Alert>
 <br/>
@@ -108,9 +123,9 @@ chart.addData('road',roadData)
 ```
 <Alert color="primary">
 
-pathStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
+pathStyle 请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configpathstyle"><span style="color:#1890ff;">config.pathStyle</span></a>
 
-flyLineStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
+flyLineStyle 请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configflylinestyle"><span style="color:#1890ff;">config.flyLineStyle</span></a>
 
 </Alert>
 <br/>
@@ -131,7 +146,26 @@ chart.addData('point',pointData)
 scatterStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configscatterstyle"><span style="color:#1890ff;">config.scatterStyle</span></a>
 
 </Alert>
+<br/>
+<Tag color="red">type=bar</Tag>
+``` javascript
+const barData = [
+  {
+    position: {
+      lon: 112.45,
+      lat: 34.62,
+    }, //经纬度
+    value: 100, //柱状图高度
+    style:barStyle //字段解释参考下方链接
+    ...userData // 其他自定义字段
+  }
+]
+chart.addData('bar',pointData)
+```
+<Alert color="primary">
+barStyle请参考 <a style="color:" href="javascript:void(0);" data-href="/reference/property/#configbarstyle"><span style="color:#1890ff;">config.scatterStyle</span></a>
 
+</Alert>
 <br/>
 <Alert color="warning">
 该数据里面有from和to两个字段，代表起始点和终点lon和lat 分别代表经度和纬度。最终会生成带有两个涟漪点位的飞线。
@@ -144,25 +178,31 @@ id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;"
 </Alert>
 ### remove
 
-``` javascript
-chart.remove(type,ids)
-````
+```javascript
+chart.remove(type, ids);
+```
+
 ---
+
 type: <Tag color="cyan">flyLine</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">point</Tag>
 
 ids: <Tag color="cyan">string[]</Tag><span style="margin-right:8px;">|</span><Tag  color="cyan">removeAll</Tag>
 
-<br/>
+<br />
 <Tag color="red">举例</Tag>
 <Alert color="warning">
-``` javascript
-chart.remove('flyLine',['1-2']);
-chart.remove('flyLine','removeAll');
+
+```javascript
+chart.remove("flyLine", ["1-2"]);
+chart.remove("flyLine", "removeAll");
+chart.remove("bar", "removeAll"); //bar 目前只能removeAll 不支持单个移除
 ```
+
 </Alert>
 
 ### destory
-``` javascript
+
+```javascript
 //销毁实例
-chart.destory()
+chart.destory();
 ```
