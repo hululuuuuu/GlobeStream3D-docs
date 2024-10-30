@@ -331,7 +331,9 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 
 ```json
 {
-  "color": "#cd79ff"
+  "color": "#cd79ff",
+  "width": 0.5,
+  "height": 0.5
 }
 ```
 
@@ -396,6 +398,8 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 
 ````
 
+
+
 ``` javascript
 //引入地图文件
 import world from "./map/world.json";
@@ -423,23 +427,22 @@ chinaData.forEach((item: any) => {
 <br />
 <br />
 <Tag color="purple">默认</Tag>
-``` json
 
+```json
 {
-mapStreamStyle: {
-color: "#f0f0f0",
-opacity: 0.5,
-speed: 1,
-splitLine: 3,
+  "mapStreamStyle": {
+    "color": "#f0f0f0",
+    "opacity": 0.5,
+    "speed": 1,
+    "splitLine": 3
+  }
 }
-}
+```
 
-````
-
-``` javascript
+```javascript
 //引入地图文件
 import world from "./map/world.json";
-const chartInstance = chart.init(...options)
+const chartInstance = chart.init(...options);
 const chinaData = world.features.find((item: any) => {
   return item.properties.name === "China";
 }).geometry.coordinates;
@@ -447,10 +450,42 @@ const chinaData = world.features.find((item: any) => {
 //此处注意因为国家可能是由多个区域组成 比如中国大陆和中国台湾省，所以每一块儿都需要遍历添加
 chinaData.forEach((item: any) => {
   chartInstance.addData("mapStreamLine", {
-    data: item,//请注意 data 的数据结构: [[[lon,lat],[lon,lat],[lon,lat]]] 三维数组，第一维代表多边形，第二维代表多边形的点位，第三维代表点位的经纬度
+    data: item, //请注意 data 的数据结构: [[[lon,lat],[lon,lat],[lon,lat]]] 三维数组，第一维代表多边形，第二维代表多边形的点位，第三维代表点位的经纬度
     style: {
       //...
     },
   });
 });
-````
+```
+
+### config.textMark
+
+<br />
+<Tag color="blue">类型: object</Tag>
+<Tag color="pink">说明: 文字标记</Tag>
+<br />
+<br />
+<Tag color="red">举例</Tag>
+
+```json
+{
+  "textMark": {
+    //公共样式配置
+    "style": {
+      "fontSize": 20,
+      "color": "#fff"
+    },
+    "data": [
+      {
+        "position": [116.46, 39.92],
+        "text": "北京",
+        //定制化样式配置
+        "style": {
+          "fontSize": 22,
+          "color": "red"
+        }
+      }
+    ]
+  }
+}
+```
