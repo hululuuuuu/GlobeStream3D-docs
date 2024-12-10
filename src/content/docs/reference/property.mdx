@@ -109,8 +109,10 @@ js 绘制。
 // 那么想实现这种效果有两种方式
 // 1、应该是在注册地图前，处理一次地图数据，把加拿大相关数据给排除掉再进行地图注册。组件就不会绘制相关区域，这样贴图自然而然就显示出来了
 // 2、我们不想处理地图文件，那么我们可以通过设置 config.regions.Canada.show 为 false，组件同样不会渲染该片区域。
+import imageEarth from "./map/earth.png";
+
 {
-path:'path/to/image.png', //图片地址 格式可以是 img 图片 或者 svg,
+path:imageEarth, //图片地址 格式可以是 img 图片 或者 svg,
 mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 json 地图文件
 }
 
