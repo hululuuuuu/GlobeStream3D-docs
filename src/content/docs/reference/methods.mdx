@@ -33,6 +33,8 @@ chart.addData(type, data);
   <Tag color="cyan">mapStreamLine</Tag>
   <span style="margin-right:8px;">|</span>
   <Tag color="cyan">bar</Tag>
+  <span style="margin-right:8px;">|</span>
+  <Tag color="cyan">textMark</Tag>
 </div>
 
 <br/>
@@ -176,6 +178,24 @@ id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;"
 <Alert color="warning">
 和addData参数一致，区别在于setData覆盖已存在的数据。addData 是在原有数据的基础上增量添加
 </Alert>
+<br/>
+<Tag color="red">type=textMark</Tag>
+``` javascript
+chart.setData("textMark", [
+    {
+      text: "中国",
+      position: {
+        lon: 104.195397,
+        lat: 35.86166,
+      },
+    },
+  ]);
+```
+<Alert color="warning">
+id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;">id=${lon}-${lat}-${text}</span> ,如果没有传id 则会根据经纬度拼接 拼接逻辑为：
+<span style="color:#1890ff;">id =$\{from.lon\}$\{from.lat\}-$\{to.lon\}$\{to.lat\}</span> 此id被用于remove方法
+</Alert>
+
 ### remove
 
 ```javascript
