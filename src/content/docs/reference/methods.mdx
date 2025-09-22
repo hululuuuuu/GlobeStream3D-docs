@@ -192,9 +192,9 @@ chart.setData("textMark", [
   ]);
 ```
 <Alert color="warning">
-id字段：from和to里的id最终会拼接在一起<span style="color:#1890ff;">id=${lon}-${lat}-${text}</span> ,如果没有传id 则会根据经纬度拼接 拼接逻辑为：
-<span style="color:#1890ff;">id =$\{from.lon\}$\{from.lat\}-$\{to.lon\}$\{to.lat\}</span> 此id被用于remove方法
+id字段：$\{lon\}$\{lat\}$\{text\}，此id被用于remove方法
 </Alert>
+<br/>
 
 ### remove
 
