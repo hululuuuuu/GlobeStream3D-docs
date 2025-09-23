@@ -56,7 +56,10 @@ import Alert from "../../../components/alert.astro";
 
 <br />
 <Tag color="blue">类型: enum</Tag>
-<Tag color="pink"> 说明: 光照类型，目前支持 "AmbientLight" | "PointLight" | "DirectionalLight" | "RectAreaLight"</Tag>
+<Tag color="pink">
+  {" "}
+  说明: 光照类型，目前支持 "AmbientLight" | "PointLight" | "DirectionalLight" | "RectAreaLight"
+</Tag>
 <Tag color="purple">默认：-</Tag>
 
 ## options.config
@@ -364,6 +367,23 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 ```json
 {
   "enableZoom": true
+}
+```
+
+### config.zoom
+
+<br />
+<Tag color="blue">类型: number</Tag>
+<Tag color="pink">说明: 初始化放大倍数</Tag>
+<Tag color="purple">默认: 1</Tag>
+
+<br />
+<br />
+<Tag color="red">举例</Tag>
+
+```json
+{
+  "zoom": 1
 }
 ```
 
