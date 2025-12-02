@@ -52,6 +52,30 @@ import Alert from "../../../components/alert.astro";
 <Tag color="pink">说明：是否锁定30帧</Tag>
 <Tag color="purple">默认：false</Tag>
 
+### options.debugHelper
+
+<br />
+<Tag color="blue">类型: boolean</Tag>
+<Tag color="pink">说明：是否挂载内置调试面板（默认关闭，示例 App 已开启）</Tag>
+<Tag color="purple">默认：false</Tag>
+
+<Tag color="red">示例</Tag>
+
+```ts
+const chartInstance = chart.init({
+  dom,
+  map: "world",
+  debugHelper: true, // 打开调试面板
+});
+```
+
+<Alert color="primary">
+  <div>面板支持拖拽移动、去掉滚动条限制，控件初始值与初始化配置保持一致。</div>
+  <div>可视化实时调整：自转开关与速度、停悬停转、缩放开关、背景色/透明度、地球材质切换（保留贴图，支持 Phong/Basic/Lambert/Matcap/Normal）、光圈开关/颜色/尺寸、地图填充/边框/透明度、飞行路径颜色与显隐、散点颜色与尺寸、hover 样式、像素比等。</div>
+  <div>操作直接作用于已渲染对象（背景/地图/光圈/散点等实时更新），飞线与点样式去重缓存生效，Raycaster 复用。</div>
+  <div>支持一键复制当前配置，转速滑条不再出现叠加问题。</div>
+</Alert>
+
 ### options.light
 
 <br />
@@ -74,6 +98,21 @@ import Alert from "../../../components/alert.astro";
 <Tag color="blue">类型: number</Tag>
 <Tag color="pink">说明: 地球半径</Tag>
 <Tag color="purple">默认: 150</Tag>
+
+### config.pixelRatio
+
+<br />
+<Tag color="blue">类型: number</Tag>
+<Tag color="pink">说明: ChartScene 像素比（可配合 debug 面板实时调节，平衡清晰度与性能）</Tag>
+<Tag color="purple">默认: window.devicePixelRatio</Tag>
+
+<Tag color="red">举例</Tag>
+
+```json
+{
+  "pixelRatio": 1.5
+}
+```
 
 ### config.stopRotateByHover
 
@@ -522,3 +561,10 @@ chinaData.forEach((item: any) => {
   }
 }
 ```
+
+## 调试与性能说明
+
+- 生命周期销毁时释放 renderer、controls 与事件监听，避免资源泄露。
+- Raycaster 复用，飞线/点位样式去重缓存生效；飞线和散点贴图启用纹理缓存，减少重复加载。
+- 调试面板的背景、地图、光圈、散点、材质等改动会实时作用于已渲染对象。
+- 支持通过 config.pixelRatio（或调试面板）调节像素比，在清晰度与性能间快速取舍。
