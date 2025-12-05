@@ -217,9 +217,31 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 ``` json
 {
   areaColor: "#2e3564", //区域颜色
-  lineColor: "#797eff",//边界线颜色
+  lineColor: "#797eff", //边界线颜色
+  opacity: 1, //区域透明度
+  material: "MeshBasicMaterial", //材质类型，可选 MeshBasicMaterial / MeshLambertMaterial / MeshPhongMaterial
 }
 ```
+
+<Tag color="red">示例</Tag>
+
+```ts
+chart.init({
+  // ...
+  config: {
+    mapStyle: {
+      areaColor: "#2e3564",
+      lineColor: "#797eff",
+      opacity: 1,
+      material: "MeshBasicMaterial", // 或 MeshLambertMaterial / MeshPhongMaterial
+    },
+  },
+});
+```
+
+<Alert color="primary">
+  使用提示：MeshBasicMaterial 不依赖光源；MeshLambertMaterial / MeshPhongMaterial 需场景中有光才能正常显示颜色。
+</Alert>
 
 ### config.spriteStyle
 
@@ -430,19 +452,26 @@ mixed: false, //是否混合地图和地球贴图 如果为 true 记得注册 js
 ### config.regions
 <br />
 <Tag color="blue">类型: object</Tag>
-<Tag color="pink">说明: 单独配置地图区域的颜色</Tag>
+<Tag color="pink">说明: 单独配置地图区域的样式（覆盖 mapStyle 同名字段）</Tag>
 <Tag color="purple">默认: -</Tag>
 
 <br />
 <br />
 
 <Tag color="red">举例</Tag>
-``` json
-{
-  China: {
-    areaColor: "#2e3564",
+```ts
+chart.init({
+  // ...
+  config: {
+    mapStyle: {
+      material: "MeshBasicMaterial",
+      opacity: 1,
+    },
+    regions: {
+      China: { material: "MeshPhongMaterial", areaColor: "#f00" },
+    },
   },
-},
+});
 ```
 <Alert color="primary">提示：key值取地图json文件 里对应国家 properties.name 字段</Alert>
 
